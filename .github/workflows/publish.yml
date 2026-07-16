@@ -41,6 +41,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install pillow playwright pypdf
           python -m playwright install --with-deps chromium
+      - name: Apply approved campaign corrections
+        run: python scripts/apply_campaign_corrections.py
       - name: Build and audit artifacts
         run: |
           python scripts/build_artifacts.py
@@ -51,7 +53,7 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add -A
           if ! git diff --cached --quiet; then
-            git commit -m "Publish complete Walmart candidate campaign [skip ci]"
+            git commit -m "Publish corrected Walmart candidate campaign [skip ci]"
             git push
           fi
       - name: Configure Pages
