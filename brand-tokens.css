@@ -1,0 +1,15 @@
+:root {
+  --walmart-true-blue: #0053e2; /* official */
+  --walmart-spark-yellow: #ffc220; /* source-sampled from official Spark asset */
+  --walmart-bentonville-blue: #001e60; /* official */
+  --walmart-sky-blue: #a9ddf7; /* official */
+  --walmart-everyday-blue: #4dbdf5; /* official */
+  --walmart-white: #ffffff;
+  --campaign-ink: #081b3a; /* candidate-original */
+  --campaign-mist: #eef7ff; /* candidate-original */
+  --campaign-green: #16865c; /* candidate-original semantic */
+  --campaign-amber: #a75d00; /* candidate-original semantic */
+  --campaign-red: #b42318; /* candidate-original semantic */
+  --campaign-line: rgba(0, 30, 96, 0.16);
+  --campaign-shadow: 0 18px 55px rgba(0, 30, 96, 0.12);
+}

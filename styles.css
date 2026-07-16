@@ -1,0 +1,281 @@
+@import url('./brand-tokens.css');
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--campaign-ink);
+  background: var(--walmart-white);
+  font-family: "Noto Sans", "Roboto", sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--walmart-spark-yellow); outline-offset: 3px; }
+.skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 9999; background: #fff; padding: .7rem 1rem; border: 2px solid var(--walmart-true-blue); }
+.skip-link:focus { top: 1rem; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .85rem clamp(1rem, 4vw, 4rem);
+  background: rgba(255,255,255,.94);
+  border-bottom: 1px solid var(--campaign-line);
+  backdrop-filter: blur(16px);
+}
+.brand-lockup { display: flex; align-items: center; gap: .8rem; text-decoration: none; min-width: 0; }
+.brand-lockup img { width: 104px; height: 52px; object-fit: contain; object-position: center; border-radius: 2px; }
+.brand-lockup span { font-size: .78rem; line-height: 1.2; color: var(--walmart-bentonville-blue); max-width: 190px; }
+.nav-toggle { display: none; border: 0; background: transparent; color: var(--walmart-bentonville-blue); font-weight: 700; }
+.site-nav { display: flex; gap: 1.1rem; align-items: center; }
+.site-nav a { text-decoration: none; font-size: .88rem; font-weight: 700; color: var(--walmart-bentonville-blue); }
+.site-nav a:hover { color: var(--walmart-true-blue); }
+
+.hero {
+  position: relative; min-height: 820px; overflow: hidden;
+  background: linear-gradient(140deg, var(--walmart-true-blue) 0 62%, var(--walmart-bentonville-blue) 62% 100%);
+  color: #fff;
+}
+.hero::after {
+  content: ""; position: absolute; inset: auto -8% -160px 38%; height: 360px;
+  background: var(--walmart-spark-yellow); transform: rotate(-9deg); opacity: .96;
+}
+.hero-inner {
+  position: relative; z-index: 2; max-width: 1440px; margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, .9fr) minmax(560px, 1.1fr); gap: clamp(2rem, 5vw, 6rem);
+  padding: clamp(4.5rem, 8vw, 8rem) clamp(1.2rem, 5vw, 5rem) 7rem;
+  align-items: center;
+}
+.hero-copy h1 { margin: 0 0 1.5rem; font-size: clamp(3.2rem, 6.4vw, 6.6rem); line-height: .94; letter-spacing: -.055em; max-width: 10ch; }
+.hero-copy .lead { font-size: clamp(1.18rem, 1.9vw, 1.55rem); max-width: 35rem; margin: 0; color: #e6f4ff; }
+.hero-copy .thesis { margin: 2rem 0 0; padding-left: 1.2rem; border-left: 5px solid var(--walmart-spark-yellow); font-weight: 700; max-width: 34rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1.1rem; text-decoration: none; border-radius: 2px; border: 2px solid transparent; font-weight: 800; }
+.btn-primary { background: var(--walmart-spark-yellow); color: var(--walmart-bentonville-blue); }
+.btn-secondary { border-color: #fff; color: #fff; background: transparent; }
+.btn-light { background: #fff; color: var(--walmart-bentonville-blue); border-color: var(--campaign-line); }
+
+.scan-stage { position: relative; min-height: 570px; display: grid; align-items: center; }
+.scan-frame { position: relative; background: #fff; color: var(--walmart-bentonville-blue); padding: clamp(1.2rem, 3vw, 2.5rem); box-shadow: 22px 26px 0 rgba(0,30,96,.48); transform: rotate(1.2deg); }
+.scan-frame::before { content:"ILLUSTRATIVE DECISION SCAN"; display:block; font-size:.72rem; letter-spacing:.14em; font-weight:900; margin-bottom:1rem; }
+.barcode { position: relative; display: grid; grid-template-columns: 1.4fr .8fr 1fr .55fr 1.2fr .7fr 1.35fr; gap: 8px; min-height: 290px; align-items: stretch; overflow: hidden; padding: 8px 0; }
+.bar { display:flex; align-items:flex-end; justify-content:center; padding: .9rem .25rem; writing-mode: vertical-rl; transform: rotate(180deg); font-size:.72rem; font-weight:900; letter-spacing:.06em; color:#fff; background: var(--walmart-bentonville-blue); transition: transform .5s ease, opacity .5s ease, background .5s ease; }
+.bar:nth-child(even){ background: var(--walmart-true-blue); }
+.bar[data-state="watch"] { background: var(--campaign-amber); }
+.bar[data-state="weak"] { background: var(--campaign-red); opacity:.78; }
+.scan-beam { position:absolute; top:0; bottom:0; width:3px; background:var(--walmart-spark-yellow); box-shadow:0 0 22px 8px rgba(255,194,32,.55); animation:scan 4.6s cubic-bezier(.65,0,.35,1) infinite; }
+@keyframes scan { 0%,12%{left:0;opacity:0} 18%{opacity:1} 82%{opacity:1} 88%,100%{left:calc(100% - 3px);opacity:0} }
+.scan-outcome { display:flex; justify-content:space-between; gap:1rem; align-items:flex-end; padding-top:1.2rem; border-top:1px solid var(--campaign-line); }
+.scan-outcome strong { font-size:clamp(2rem,4vw,3.4rem); letter-spacing:-.04em; color:var(--campaign-green); }
+.scan-outcome span { max-width:18rem; font-size:.86rem; color:#42516b; }
+
+.section { padding: clamp(4.5rem, 8vw, 8rem) clamp(1.2rem, 5vw, 5rem); }
+.section-inner { max-width: 1240px; margin: 0 auto; }
+.section h2 { margin: 0 0 1.1rem; font-size: clamp(2.3rem, 4.6vw, 4.6rem); line-height: 1.02; letter-spacing: -.045em; color: var(--walmart-bentonville-blue); }
+.section-intro { max-width: 52rem; font-size: 1.15rem; color: #42516b; margin: 0 0 3rem; }
+.blue-band { background: var(--walmart-bentonville-blue); color: #fff; }
+.blue-band h2 { color: #fff; }
+.blue-band .section-intro { color: #d9ecff; }
+.mist-band { background: linear-gradient(180deg, #fff 0, var(--campaign-mist) 100%); }
+.yellow-band { background: var(--walmart-spark-yellow); color: var(--walmart-bentonville-blue); }
+.yellow-band h2 { color: var(--walmart-bentonville-blue); }
+
+.tension-grid { display:grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--walmart-true-blue); border-bottom: 2px solid var(--walmart-true-blue); }
+.tension { padding: 2rem; border-right: 1px solid var(--campaign-line); }
+.tension:last-child { border-right:0; }
+.tension .number { font-size:.75rem; letter-spacing:.15em; font-weight:900; color:var(--walmart-true-blue); }
+.tension h3 { margin:.6rem 0 .8rem; font-size:1.35rem; line-height:1.15; }
+.tension p { margin:0; color:#526176; }
+
+.scan-lab { display:grid; grid-template-columns: minmax(260px,.7fr) minmax(0,1.3fr); gap:2rem; align-items:start; }
+.scenario-panel { position:sticky; top:90px; border-left:8px solid var(--walmart-spark-yellow); padding:1.5rem; background:#fff; color:var(--walmart-bentonville-blue); }
+.scenario-panel h3 { margin:0 0 1rem; font-size:1.5rem; }
+.scenario-list { display:grid; gap:.6rem; }
+.scenario-button { text-align:left; border:2px solid #d5e3f6; background:#fff; padding:.85rem; color:var(--walmart-bentonville-blue); font-weight:800; border-radius:2px; }
+.scenario-button[aria-pressed="true"] { background:var(--walmart-true-blue); color:#fff; border-color:var(--walmart-true-blue); }
+.reset-button { margin-top:1rem; border:0; background:transparent; color:var(--walmart-true-blue); text-decoration:underline; font-weight:800; }
+.contract-panel { background:#fff; color:var(--walmart-bentonville-blue); padding:clamp(1.2rem,3vw,2.5rem); box-shadow:var(--campaign-shadow); }
+.contract-header { display:flex; justify-content:space-between; gap:1rem; align-items:flex-start; margin-bottom:1.4rem; }
+.contract-header h3 { margin:0; font-size:clamp(1.5rem,3vw,2.2rem); }
+.contract-status { font-weight:900; color:var(--campaign-green); border-bottom:4px solid currentColor; padding-bottom:.25rem; white-space:nowrap; }
+.contract-bars { display:grid; grid-template-columns:repeat(7,1fr); gap:.55rem; height:300px; align-items:end; position:relative; overflow:hidden; padding:1rem 0 0; border-bottom:4px solid var(--walmart-bentonville-blue); }
+.contract-bar { min-width:0; height:var(--height,80%); background:var(--walmart-true-blue); display:flex; align-items:flex-end; padding:.65rem .4rem; color:#fff; transition:height .45s ease, background .45s ease, opacity .45s ease; }
+.contract-bar span { writing-mode:vertical-rl; transform:rotate(180deg); font-size:.68rem; line-height:1; font-weight:900; letter-spacing:.04em; overflow:hidden; }
+.contract-bar.watch { background:var(--campaign-amber); }
+.contract-bar.weak { background:var(--campaign-red); }
+.contract-scan { position:absolute; left:0; right:0; height:3px; top:20%; background:var(--walmart-spark-yellow); box-shadow:0 0 14px 3px rgba(255,194,32,.45); transition:top .45s ease; }
+.contract-readout { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem; }
+.readout-block { border-top:1px solid var(--campaign-line); padding-top:1rem; }
+.readout-block b { display:block; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.35rem; }
+.readout-block p { margin:0; color:#526176; }
+.assumption-note { margin-top:1.2rem; font-size:.78rem; color:#6b778c; }
+
+.architecture { display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,5rem); align-items:start; }
+.constitution { display:grid; gap:0; border-top:1px solid rgba(255,255,255,.3); }
+.clause { display:grid; grid-template-columns:70px 1fr; gap:1rem; padding:1.35rem 0; border-bottom:1px solid rgba(255,255,255,.2); }
+.clause strong { color:var(--walmart-spark-yellow); font-size:1.35rem; }
+.clause h3 { margin:0 0 .35rem; font-size:1.2rem; }
+.clause p { margin:0; color:#d9ecff; }
+.decision-rail { background:#fff; color:var(--walmart-bentonville-blue); padding:2rem; }
+.decision-rail h3 { margin-top:0; font-size:1.6rem; }
+.outcome-row { display:grid; grid-template-columns:90px 1fr; gap:1rem; padding:1.15rem 0; border-top:1px solid var(--campaign-line); }
+.outcome-row b { font-size:1.1rem; }
+.outcome-row p { margin:0; color:#526176; }
+
+.scorecard { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--campaign-line); border:1px solid var(--campaign-line); }
+.metric { background:#fff; padding:1.7rem; min-height:180px; }
+.metric span { font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--walmart-true-blue); font-weight:900; }
+.metric h3 { margin:.65rem 0 .5rem; font-size:1.25rem; }
+.metric p { margin:0; color:#526176; }
+
+.evidence-map { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.evidence-card { padding:1.6rem; border-top:6px solid var(--walmart-true-blue); background:#fff; box-shadow:0 8px 30px rgba(0,30,96,.08); }
+.evidence-card h3 { margin:.4rem 0 .7rem; font-size:1.35rem; }
+.evidence-card p { color:#526176; }
+.evidence-card ul { padding-left:1.1rem; margin-bottom:0; }
+.evidence-card li { margin:.4rem 0; }
+
+.timeline { position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.timeline::before { content:""; position:absolute; left:0; right:0; top:24px; height:4px; background:var(--walmart-true-blue); }
+.phase { position:relative; padding:4.3rem 1.3rem 1.2rem; border-right:1px solid var(--campaign-line); }
+.phase:last-child { border-right:0; }
+.phase::before { content:""; position:absolute; top:12px; left:1.3rem; width:26px; height:26px; border-radius:50%; background:var(--walmart-spark-yellow); border:5px solid var(--walmart-bentonville-blue); }
+.phase b { color:var(--walmart-true-blue); }
+.phase h3 { margin:.45rem 0 .7rem; }
+.phase ul { padding-left:1.1rem; color:#526176; }
+
+.objection { display:grid; grid-template-columns:.8fr 1.2fr; gap:4rem; align-items:start; }
+.objection .question { font-size:clamp(1.8rem,3.4vw,3.2rem); line-height:1.1; font-weight:900; letter-spacing:-.035em; }
+.objection .answer { font-size:1.1rem; }
+.objection .answer strong { color:var(--walmart-true-blue); }
+.questions { display:grid; gap:0; counter-reset:q; }
+.question-item { counter-increment:q; display:grid; grid-template-columns:70px 1fr; gap:1rem; padding:1.3rem 0; border-top:1px solid var(--campaign-line); }
+.question-item::before { content:counter(q, decimal-leading-zero); color:var(--walmart-true-blue); font-weight:900; font-size:1.1rem; }
+.question-item p { margin:0; font-size:1.08rem; }
+
+.document-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; margin-top:2rem; }
+.document-link { min-height:180px; padding:1.4rem; background:#fff; color:var(--walmart-bentonville-blue); text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; border-top:8px solid var(--walmart-spark-yellow); transition:transform .2s ease; }
+.document-link:hover { transform:translateY(-5px); }
+.document-link b { font-size:1.2rem; }
+.document-link span { font-size:.82rem; color:#526176; }
+
+.site-footer { padding:2rem clamp(1.2rem,5vw,5rem); background:#06142e; color:#cce3ff; font-size:.8rem; }
+.site-footer .footer-inner { max-width:1240px; margin:0 auto; display:flex; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+.site-footer a { color:#fff; }
+
+/* Document system */
+.document-body { background:#eaf0f7; }
+.document-actions { position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem; padding:.8rem; background:rgba(0,30,96,.96); }
+.document-actions a { color:#fff; border:1px solid rgba(255,255,255,.5); text-decoration:none; padding:.55rem .8rem; font-weight:800; font-size:.82rem; }
+.document-actions a.primary { background:var(--walmart-spark-yellow); color:var(--walmart-bentonville-blue); border-color:var(--walmart-spark-yellow); }
+.document-stack { padding:2rem 1rem 4rem; }
+.sheet { width:8.5in; min-height:11in; margin:0 auto 1.2rem; background:#fff; box-shadow:0 8px 30px rgba(0,30,96,.15); padding:.55in .62in .48in; position:relative; overflow:visible; }
+.sheet + .sheet { break-before:page; }
+.doc-header { display:grid; grid-template-columns:1fr auto; gap:1rem; border-bottom:4px solid var(--walmart-true-blue); padding-bottom:.18in; margin-bottom:.22in; align-items:end; }
+.doc-name { font-size:26pt; line-height:1; font-weight:900; letter-spacing:-.035em; color:var(--walmart-bentonville-blue); }
+.doc-identity { font-size:9.5pt; font-weight:800; margin-top:.08in; color:var(--walmart-true-blue); }
+.doc-contact { font-size:7.7pt; line-height:1.45; text-align:right; max-width:3.45in; }
+.doc-contact a { color:var(--walmart-bentonville-blue); text-decoration:none; }
+.doc-company { display:flex; align-items:center; gap:.1in; font-size:7pt; color:#526176; text-transform:uppercase; letter-spacing:.09em; }
+.doc-company img { width:.72in; height:.36in; object-fit:cover; }
+.doc-title { margin:.05in 0 .12in; font-size:18pt; line-height:1.05; color:var(--walmart-bentonville-blue); letter-spacing:-.02em; }
+.doc-subtitle { margin:0 0 .17in; font-size:9.6pt; color:#4f5f75; }
+.doc-grid-2 { display:grid; grid-template-columns:1.06fr .94fr; gap:.25in; }
+.doc-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:.15in; }
+.doc-section { margin-top:.16in; break-inside:avoid; }
+.doc-section h2 { margin:0 0 .08in; font-size:9.8pt; letter-spacing:.08em; text-transform:uppercase; color:var(--walmart-true-blue); border-bottom:1px solid #b9cce6; padding-bottom:.035in; }
+.doc-section h3 { margin:.075in 0 .03in; font-size:9.2pt; color:var(--walmart-bentonville-blue); }
+.doc-section p, .doc-section li { font-size:8.25pt; line-height:1.34; }
+.doc-section p { margin:.04in 0; }
+.doc-section ul { margin:.03in 0 .08in; padding-left:.16in; }
+.doc-section li { margin:.025in 0; }
+.role-row { display:grid; grid-template-columns:1fr auto; align-items:baseline; gap:.1in; }
+.role-row strong { font-size:9.6pt; }
+.role-row span { font-size:7.8pt; color:#68758a; }
+.resume-summary { padding:.14in; background:var(--campaign-mist); border-left:4px solid var(--walmart-spark-yellow); font-size:8.7pt; line-height:1.4; }
+.capability-list { display:grid; grid-template-columns:1fr 1fr; gap:.04in .12in; margin:0; padding:0; list-style:none; }
+.capability-list li { border-bottom:1px solid #d8e4f3; padding:.04in 0; font-size:7.8pt; }
+.evidence-chip { padding:.1in; border-top:3px solid var(--walmart-true-blue); background:#f7fbff; }
+.evidence-chip b { font-size:8.6pt; }
+.evidence-chip p { font-size:7.7pt; }
+.doc-footer { position:absolute; left:.62in; right:.62in; bottom:.25in; display:flex; justify-content:space-between; border-top:1px solid #d5dfec; padding-top:.07in; font-size:7pt; color:#6b778c; }
+.page-two-header { display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid var(--walmart-true-blue); padding-bottom:.09in; margin-bottom:.16in; font-size:8pt; }
+.page-two-header strong { font-size:11pt; color:var(--walmart-bentonville-blue); }
+.letter-meta { margin:.12in 0 .16in; font-size:8.5pt; line-height:1.4; color:#4f5f75; }
+.letter-body p { font-size:10.1pt; line-height:1.54; margin:.13in 0; }
+.letter-signoff { margin-top:.18in; }
+.brief-callout { padding:.14in; background:var(--walmart-bentonville-blue); color:#fff; border-left:8px solid var(--walmart-spark-yellow); }
+.brief-callout h2 { color:#fff; border-color:rgba(255,255,255,.35); }
+.brief-callout p { font-size:9pt; }
+.mini-barcode { display:grid; grid-template-columns:1.4fr .8fr 1fr .55fr 1.2fr .7fr 1.35fr; gap:3px; height:1.2in; align-items:stretch; margin:.12in 0; }
+.mini-barcode span { background:var(--walmart-bentonville-blue); }
+.mini-barcode span:nth-child(even){ background:var(--walmart-true-blue); }
+.mini-barcode span:nth-child(4){ background:var(--walmart-spark-yellow); }
+.table { width:100%; border-collapse:collapse; font-size:7.6pt; }
+.table th,.table td { border:1px solid #cad7e8; padding:.06in; text-align:left; vertical-align:top; }
+.table th { background:var(--campaign-mist); color:var(--walmart-bentonville-blue); }
+.phase-box { border-top:5px solid var(--walmart-true-blue); padding:.12in; background:#f8fbff; min-height:1.8in; }
+.phase-box b { color:var(--walmart-true-blue); }
+.phase-box h3 { margin:.04in 0 .06in; }
+.source-list { font-size:7.5pt; line-height:1.35; overflow-wrap:anywhere; }
+
+@media (max-width: 1050px) {
+  .hero { min-height:auto; }
+  .hero-inner { grid-template-columns:1fr; }
+  .scan-stage { min-height:500px; max-width:760px; }
+  .tension-grid, .evidence-map { grid-template-columns:1fr 1fr; }
+  .scan-lab, .architecture { grid-template-columns:1fr; }
+  .scenario-panel { position:static; }
+  .document-strip { grid-template-columns:1fr 1fr; }
+}
+@media (max-width: 740px) {
+  .site-header { align-items:flex-start; }
+  .nav-toggle { display:block; }
+  .site-nav { display:none; position:absolute; top:100%; left:0; right:0; padding:1rem; background:#fff; flex-direction:column; align-items:stretch; border-bottom:1px solid var(--campaign-line); }
+  .site-nav.open { display:flex; }
+  .brand-lockup img { width:84px; height:42px; }
+  .brand-lockup span { display:none; }
+  .hero-inner { padding-top:2.8rem; gap:1.2rem; }
+  .hero-copy h1 { font-size:clamp(3rem,13.5vw,4.1rem); line-height:.95; }
+  .hero-copy .lead { font-size:1rem; line-height:1.48; }
+  .hero-copy .thesis { margin-top:1.15rem; font-size:.92rem; }
+  .hero-actions { display:none; }
+  .scan-stage { min-height:390px; }
+  .scan-frame { padding:1rem; }
+  .barcode { min-height:180px; }
+  .scan-outcome strong { font-size:2rem; }
+  .scan-frame { transform:none; box-shadow:12px 14px 0 rgba(0,30,96,.48); }
+  .barcode { gap:4px; min-height:230px; }
+  .bar { font-size:.55rem; }
+  .tension-grid, .scorecard, .evidence-map, .timeline, .document-strip { grid-template-columns:1fr; }
+  .tension { border-right:0; border-bottom:1px solid var(--campaign-line); }
+  .timeline::before { left:24px; right:auto; top:0; bottom:0; width:4px; height:auto; }
+  .phase { padding:1rem 1rem 1.5rem 4rem; border-right:0; }
+  .phase::before { top:1rem; left:12px; }
+  .contract-bars { height:245px; }
+  .contract-readout, .objection { grid-template-columns:1fr; gap:1rem; }
+  .question-item { grid-template-columns:45px 1fr; }
+  .document-stack { padding:.7rem 0 2rem; }
+  .sheet { width:100%; min-height:auto; margin:0 0 .8rem; padding:1rem; box-shadow:none; }
+  .doc-footer { position:static; margin-top:1rem; }
+  .doc-header, .doc-grid-2, .doc-grid-3 { grid-template-columns:1fr; }
+  .doc-contact { text-align:left; max-width:none; }
+  .document-actions { position:static; }
+}
+@media print {
+  @page { size: Letter; margin: 0; }
+  html, body { background:#fff !important; }
+  .document-actions, .no-print { display:none !important; }
+  .document-stack { padding:0; }
+  .sheet { width:8.5in; height:11in; min-height:11in; margin:0; box-shadow:none; overflow:hidden; break-after:page; }
+  .sheet:last-child { break-after:auto; }
+  a { text-decoration:none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  .scan-beam { left:58%; opacity:1; }
+}
