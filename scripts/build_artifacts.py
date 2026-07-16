@@ -20,7 +20,7 @@ for name, url in ASSETS.items():
         urllib.request.urlretrieve(url, target)
 
 for src_name, dst_name, box in [
-    ('walmart-wordmark-white-on-true-blue.jpg', 'walmart-wordmark-cropped.jpg', (205, 185, 795, 380)),
+    ('walmart-wordmark-white-on-true-blue.jpg', 'walmart-wordmark-cropped.jpg', (155, 145, 845, 420)),
     ('walmart-spark-true-blue.jpg', 'walmart-spark-cropped.jpg', (340, 110, 660, 450)),
 ]:
     with Image.open(BRAND / src_name) as image:
@@ -30,7 +30,7 @@ PAIRS = [
     ('resume.html', 'resume.pdf', 2),
     ('cover-letter.html', 'cover-letter.pdf', 1),
     ('interview-brief.html', 'interview-brief.pdf', 3),
-    ('120-day-plan.html', '120-day-plan.pdf', 2),
+    ('120-day-plan.html', '120-day-plan.pdf', 4),
     ('ai-portfolio-review.html', 'ai-portfolio-review.pdf', 2),
 ]
 

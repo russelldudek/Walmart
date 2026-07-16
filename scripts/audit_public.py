@@ -32,7 +32,7 @@ for path in ROOT.rglob('*'):
 if violations:
     raise SystemExit(f'Private-name matches: {violations}')
 
-expected_pages = {'resume.pdf': 2, 'cover-letter.pdf': 1, 'interview-brief.pdf': 3, '120-day-plan.pdf': 2, 'ai-portfolio-review.pdf': 2}
+expected_pages = {'resume.pdf': 2, 'cover-letter.pdf': 1, 'interview-brief.pdf': 3, '120-day-plan.pdf': 4, 'ai-portfolio-review.pdf': 2}
 for name, count in expected_pages.items():
     reader = PdfReader(ROOT / 'docs' / name)
     if len(reader.pages) != count:

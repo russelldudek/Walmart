@@ -7,7 +7,7 @@
 
 ## Official identity assets
 - Source asset: `assets/brand/walmart-wordmark-white-on-true-blue.jpg`
-- Non-destructive crop derivative: `assets/brand/walmart-wordmark-cropped.jpg`
+- Non-destructive crop derivative: `assets/brand/walmart-wordmark-cropped.jpg` (retains additional horizontal clear space for document headers)
 - Source asset: `assets/brand/walmart-spark-true-blue.jpg`
 - Non-destructive crop derivative: `assets/brand/walmart-spark-cropped.jpg`
 - Direct official wordmark source: https://corporate.walmart.com/content/dam/corporate/images/newsroom/2025/01/13/walmart-introduces-updated-look-and-feel-a-testament-to-heritage-and-innovation/wordmark-white-on-true-blue.jpg

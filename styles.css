@@ -119,7 +119,7 @@ button { cursor: pointer; }
 .clause strong { color:var(--walmart-spark-yellow); font-size:1.35rem; }
 .clause h3 { margin:0 0 .35rem; font-size:1.2rem; }
 .clause p { margin:0; color:#d9ecff; }
-.decision-rail { background:#fff; color:var(--walmart-bentonville-blue); padding:2rem; }
+.decision-rail { position:sticky; top:90px; align-self:start; background:#fff; color:var(--walmart-bentonville-blue); padding:2rem; }
 .decision-rail h3 { margin-top:0; font-size:1.6rem; }
 .outcome-row { display:grid; grid-template-columns:90px 1fr; gap:1rem; padding:1.15rem 0; border-top:1px solid var(--campaign-line); }
 .outcome-row b { font-size:1.1rem; }
@@ -180,7 +180,7 @@ button { cursor: pointer; }
 .doc-contact { font-size:7.7pt; line-height:1.45; text-align:right; max-width:3.45in; }
 .doc-contact a { color:var(--walmart-bentonville-blue); text-decoration:none; }
 .doc-company { display:flex; align-items:center; gap:.1in; font-size:7pt; color:#526176; text-transform:uppercase; letter-spacing:.09em; }
-.doc-company img { width:.72in; height:.36in; object-fit:cover; }
+.doc-company img { width:.92in; height:.34in; object-fit:contain; object-position:left center; flex:0 0 auto; }
 .doc-title { margin:.05in 0 .12in; font-size:18pt; line-height:1.05; color:var(--walmart-bentonville-blue); letter-spacing:-.02em; }
 .doc-subtitle { margin:0 0 .17in; font-size:9.6pt; color:#4f5f75; }
 .doc-grid-2 { display:grid; grid-template-columns:1.06fr .94fr; gap:.25in; }
@@ -228,7 +228,7 @@ button { cursor: pointer; }
   .scan-stage { min-height:500px; max-width:760px; }
   .tension-grid, .evidence-map { grid-template-columns:1fr 1fr; }
   .scan-lab, .architecture { grid-template-columns:1fr; }
-  .scenario-panel { position:static; }
+  .scenario-panel, .decision-rail { position:static; }
   .document-strip { grid-template-columns:1fr 1fr; }
 }
 @media (max-width: 740px) {
