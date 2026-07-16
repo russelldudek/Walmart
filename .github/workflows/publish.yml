@@ -23,11 +23,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Expand campaign source
-        if: hashFiles('campaign-source.zip.b64') != ''
+        if: hashFiles('campaign-source.part-*') != '' || hashFiles('campaign-source.zip.b64') != ''
         run: |
-          base64 --decode campaign-source.zip.b64 > /tmp/campaign-source.zip
+          if compgen -G 'campaign-source.part-*' > /dev/null; then
+            cat campaign-source.part-* > /tmp/campaign-source.zip.b64
+          else
+            cp campaign-source.zip.b64 /tmp/campaign-source.zip.b64
+          fi
+          base64 --decode /tmp/campaign-source.zip.b64 > /tmp/campaign-source.zip
           unzip -o /tmp/campaign-source.zip -d .
-          rm -f campaign-source.zip.b64
+          rm -f campaign-source.zip.b64 campaign-source.part-*
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
